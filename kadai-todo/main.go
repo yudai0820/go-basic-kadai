@@ -8,7 +8,7 @@ type Todo struct {
 	Completed bool
 }
 
-func Complete(t *Todo) {
+func (t *Todo) Complete() {
 	fmt.Printf("ID：%dのToDoを完了に更新します\n", t.Id)
 	t.Completed = true
 }
@@ -30,10 +30,12 @@ func main() {
 		{Id: 3, Title: "基礎文法", Completed: false},
 	}
 
+	fmt.Println("--- ToDoリスト（初期状態） ---")
 	printTodos(todos)
 
-	Complete(&todos[0])
-	Complete(&todos[1])
+	todos[0].Complete()
+	todos[1].Complete()
 
+	fmt.Println("--- ToDoリスト（最終状態） ---")
 	printTodos(todos)
 }
